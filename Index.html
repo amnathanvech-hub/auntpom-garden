@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuntPom Garden - CEO กิจฮับ & หมูปิ้ง</title>
+<style>
+body{font-family:sans-serif;background:#f6fbf6;margin:0}
+.header{text-align:center;padding:20px;background:white}
+.logo{width:320px;max-width:90%}
+.search-box{background:white;max-width:700px;margin:20px auto;padding:20px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.07)}
+input{width:65%;padding:14px;border:2px solid #a3d977;border-radius:10px;font-size:18px}
+button.check{padding:14px 24px;background:#2e7d32;color:white;border:none;border-radius:10px;font-size:18px;cursor:pointer;margin-left:8px}
+.domain-card{background:white;max-width:700px;margin:12px auto;padding:16px;border-radius:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-left:5px solid #81c784}
+.buttons{display:flex;flex-wrap:wrap;gap:6px}
+.btn{padding:6px 10px;border-radius:6px;text-decoration:none;color:white;font-size:13px;background:#666}
+.btn.best{background:#1b5e20;font-weight:bold;transform:scale(1.1)}
+.audio-box{max-width:700px;margin:20px auto;background:#fffbe6;border:2px dashed #ffb300;padding:16px;border-radius:12px;text-align:center}
+.about{max-width:700px;margin:20px auto;background:white;padding:20px;border-radius:12px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AuntPom Garden 🐱🌿</h1>
+<p>เช็คชื่อสวน 10 เจ้า - by CEO กิจฮับ & DJ หมูปิ้ง</p>
+</div>
+
+<div class="search-box">
+<input id="gardenName" placeholder="เช่น baansuanpom" value="baansuanpom">
+<button class="check" onclick="check()">เช็ค 10 เจ้า</button>
+</div>
+
+<div id="results"></div>
+
+<div class="audio-box">
+<h3>🎵 DJ หมูปิ้ง - ศิลปิน Suno</h3>
+<p>Wireless Energy from Orbit 2</p>
+<audio controls style="width:100%">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+<p style="font-size:12px">มีหลายเพลง ใส่เพิ่มได้ทีหลัง</p>
+</div>
+
+<div class="about">
+<h3>เจ้าของสวน - ป้าป้อม @ สะพานข้ามแม่น้ำแคว</h3>
+<p>เว็บนี้มี CEO แมว 2 ตัวเฝ้าอยู่ครับ</p>
+</div>
+
+<script>
+const registrars=[
+{name:'Hostinger ⭐ BEST 60%',color:'#673ab7',best:true,link:'https://www.hostinger.com/domain-name-search?query='},
+{name:'GoDaddy',color:'#00838a',link:'https://www.godaddy.com/domainsearch/find?domainToCheck='},
+{name:'Namecheap',color:'#ef6c00',link:'https://www.namecheap.com/domains/registration/results/?domain='},
+{name:'Porkbun',color:'#e91e63',link:'https://porkbun.com/checkout/search?q='},
+{name:'Dynadot',color:'#1565c0',link:'https://www.dynadot.com/domain/search?domain='},
+{name:'Cloudflare',color:'#f57f17',link:'https://www.cloudflare.com/products/registrar/#search='},
+{name:'Squarespace',color:'#000',link:'https://domains.squarespace.com/domain-search?query='},
+{name:'HostAtom',color:'#2e7d32',link:'https://www.hostatom.com/whmcs/cart.php?a=add&domain=register&query='},
+{name:'Spaceship',color:'#4a148c',link:'https://www.spaceship.com/domain-search/?query='},
+{name:'Bluehost',color:'#0d47a1',link:'https://www.bluehost.com/domains/search?domain='}
+];
+function check(){
+ const base=document.getElementById('gardenName').value.trim()||'baansuanpom';
+ const exts=['.com','.garden','.farm','.store','.co.th'];
+ const results=document.getElementById('results');
+ results.innerHTML='';
+ exts.forEach(ext=>{
+   const full=base+ext;
+   let btns=registrars.map(r=>`<a class="btn ${r.best?'best':''}" style="background:${r.color}" href="${r.link}${full}" target="_blank">${r.name}</a>`).join('');
+   results.innerHTML+=`<div class="domain-card"><div><b>${full}</b></div><div class="buttons">${btns}</div></div>`;
+ });
+}
+check();
+</script>
+</body>
+</html>
